@@ -29,7 +29,7 @@ for i in dfcols:
 
 
 app = dash.Dash(__name__, title = "Ultimate Hearts League")
-
+server = app.server
 
 
 app.layout = html.Div(children=[
@@ -221,3 +221,4 @@ if __name__ == '__main__':
 
 #  all(item in list2 for item in list1)
 
+# pip3 install heroku3
