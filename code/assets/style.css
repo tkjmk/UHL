@@ -1,0 +1,18 @@
+.custom-dropdown .Select--multi .Select-value {
+    background-color: #f0f0f0;
+    border-color: #b51735;
+    color: #b51735;
+  }
+
+/* .custom-dropdown  .Select-control {
+    background-color: rgb(252, 232, 235) !important;
+  } */
+  
+.custom-dropdown  .Select-menu-outer {
+    background-color: rgb(250, 248, 248);
+  }
+
+ .custom-dropdown .is-focused:not(.is-open) > .Select-control {
+    border-color: #b51735;
+    box-shadow: 0 0 0 3px #f9d1d7;
+  }
