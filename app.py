@@ -8,7 +8,7 @@ from subprocess import call
 from dash.exceptions import PreventUpdate
 from dash.dependencies import Input, Output, State
 
-df = pd.read_csv('/Users/tkafle/Desktop/HG/finalstats.txt')
+df = pd.read_csv('/Users/tkafle/Desktop/HG/data/finalstats.txt')
 # sorting dfcols so I can merge the headers for total, 3person and 4person hearts.
 dfcols=[{"name": i, "id": i} for i in df.columns]
 hdrzt=[]
@@ -181,7 +181,7 @@ def update_sometable(n_clicks, value):
     call(script_path, shell = True) # this updates the finalstats.txt
 
     # Load your output file with "some code"
-    output_content = pd.read_csv('/Users/tkafle/Desktop/HG/finalstats.txt')
+    output_content = pd.read_csv('/Users/tkafle/Desktop/HG/data/finalstats.txt')
     # dfcols=[{"name": i, "id": i} for i in df.columns]
     # hdrzt=[]
     # hdrz3=[]
