@@ -4,7 +4,7 @@ import scipy.stats as ss
 import glob
 import sys
 
-outdir="/Users/tkafle/Desktop/HG/data/"
+outdir="/HG/data/"
 f2u = glob.glob(outdir + '*.csv') #files2use
 
 fbp = [] #filter by player(s)
