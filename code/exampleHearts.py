@@ -3,6 +3,7 @@ import numpy as np
 import scipy.stats as ss  
 import glob
 import sys
+import os
 
 outdir="data/"
 f2u = glob.glob(outdir + '*.csv') #files2use
@@ -34,6 +35,7 @@ for i in thestats:
     thestats[i] = dict.fromkeys(stats2record)
 replace(thestats)
 
+scoredict={}
 
 for csvfichier in f2u:
     print(csvfichier)
@@ -91,7 +93,7 @@ for csvfichier in f2u:
         elif fourppl is False:
             thestats[name]["TP3"].append(finalscores[0][i])
 
-
+    scoredict[os.path.basename(csvfichier)] = {'Players': new_header, "Scores": finalscores}
 
     # for i, row in heartsting.head().iterrows():
     #     print(i)
@@ -211,7 +213,11 @@ stattbl2 = pd.concat([a, b])
 
 
 stattbl2.to_csv(outdir + "finalstats.txt") # not .csv or will be in the loop above.
+np.save(outdir + "scoretable.npy", scoredict)
 
+# f = open(outdir + "scoretable.txt","w")
+# f.write( str(scoredict) )
+# f.close()
 # stattbl2.insert(0, "BPt", [0] * tblLn, True)
 # stattbl2.insert(0, "SMt", [0] * tblLn, True)
 
