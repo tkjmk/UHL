@@ -106,9 +106,9 @@ for csvfichier in f2u:
         if 26 in ptincrease:
             shotthemoon=new_header[np.where((ptincrease >= -5) & (ptincrease <= 0))[0][0]] # tells you who shot the moon. I am doing [0][0] because there should only be one person who shot the moon.
             if fourppl is True:
-                thestats[name]["SM4"].append(1)
+                thestats[shotthemoon]["SM4"].append(1)
             elif fourppl is False:
-                thestats[name]["SM3"].append(1)
+                thestats[shotthemoon]["SM3"].append(1)
             
         # idxSTM =  #https://stackoverflow.com/a/16343791
         # print("{} shot the moon!".format(new_header[ptincrease[np.where((ptincrease >= -5) & (ptincrease <= 0))]))
