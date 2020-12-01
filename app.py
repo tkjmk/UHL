@@ -159,7 +159,9 @@ html.P(["4-player points are awarded; 1st place: 3, 2nd place: 1, 3rd place: 0, 
         "3-player points are awarded; 1st place: 2, 2nd place: 0, 3rd place: -1, and a bonus point for finishing below 10.", html.Br(),
         "In the event of a tie in scores in a game, both players are awarded points for the lower position (e.g. two people tied for first place, both get points for second place).", html.Br(),
         "Ordering on the table is done by PPG (and at least five games have to have been played).", html.Br(),
-        "In the case of ties on the table, tie breakers are: (1) Lowest Average Score, (2) highest PT4, (3) lowest AS4, (4) highest PT3, (5) lowest AS3, (6) highest Gpt."
+        "In the case of ties on the table, tie breakers are: (1) Lowest Average Score, (2) highest PT4, (3) lowest AS4, (4) highest PT3, (5) lowest AS3, (6) highest Gpt.",
+        html.Br(),html.Br(),
+        "AK is known for sweaty places and constantly fishing."
 
         
 ], style={'fontFamily': 'Courier New', 'fontSize': 10, 'whiteSpace': 'pre-wrap'}),
