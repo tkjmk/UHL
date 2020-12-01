@@ -185,6 +185,13 @@ html.P(["4-player points are awarded; 1st place: 3, 2nd place: 1, 3rd place: 0, 
 
    html.H1(children='December Championship - Scores and Graph', style={'color': 'black', 'fontSize': 28, 'fontFamily': 'Courier New'} ),
 
+html.Div([
+    # html.Div(dcc.Input(id='input-on-submit', type='text')),
+    html.Button('Update scores', id='updatescores-button', n_clicks=0, style={'fontFamily': 'Courier New', 'color' : 'rgba(0,0,0,0)', 'background-color': 'rgba(0,0,0,0)', 'border': '0px solid LightGray'   }),
+
+    # html.Div(id='output-container-button',
+    #          children='Enter a value and press submit')
+], style = {},),
 
 html.Div(
     dash_table.DataTable(
@@ -192,6 +199,8 @@ html.Div(
         columns=[{'name':'Game', 'id': "Game"},{'name':'Scores', 'id': "Scores"} ], #[x.split('.')[0] for x in list(scoredict)],
         data=sd_data,
         fixed_rows={'headers': True},
+
+        style_header={'fontWeight': 'bold'},
 
         style_header_conditional=[{'if': {'column_id': 'Scores'},
         'backgroundColor': 'rgb(222, 222, 222)', 
@@ -225,8 +234,8 @@ html.Div(
 html.Div(
     dcc.Graph(id='score-graph', figure={
             'data': [
-                {'x': [1.5, 1.45, 1.32, 1.2, 1.08, 1.2, 1.25, 1.5, 1.75, 1.8, 1.92, 1.8, 1.68, 1.55, 1.5], 
-                'y': [45, 60, 70, 65, 50, 30, 20, 10, 20, 30, 50, 65, 70, 60, 45], 
+                {'x': [1.5, 1.45, 1.32, 1.2, 1.08, 1.2, 1.4, 1.5, 1.6, 1.8, 1.92, 1.8, 1.68, 1.55, 1.5], 
+                'y': [45, 60, 70, 65, 50, 30, 15, 10, 15, 30, 50, 65, 70, 60, 45], 
                 'mode': 'line', 
                 'line': {'color': 'rgb(183,21,53)', 'dash': 'solid'},
                 'name': 'Hearts',
@@ -261,10 +270,12 @@ html.Div(
     
 ])
 
+previous_value = 0
+
 @app.callback(
-    [Output("league-table", "data")],
+    [Output("league-table", "data"), Output("updatescores-button", "style")],
     [Input('update-button', 'n_clicks'), Input('player-filter', 'value')])
-def update_sometable(n_clicks, value):
+def update_leaguetable(n_clicks, value):
         # Don't run unless the button has been pressed...
     if not n_clicks:
         raise PreventUpdate
@@ -296,7 +307,41 @@ def update_sometable(n_clicks, value):
     #     else:
     #         hdrzt.append(i['name'])
     #         i['name'] = ['Total', i['name']]
-    return [output_content.to_dict("records")]
+
+    print(value)
+
+
+    return output_content.to_dict("records"), {'fontFamily': 'Courier New',}
+
+
+@app.callback(
+    [Output("score-table", "data")],
+    [Input('updatescores-button', 'n_clicks')])
+def update_scoretable(n_clicks):
+        # Don't run unless the button has been pressed...
+    if not n_clicks:
+        raise PreventUpdate
+    print("updating scores")
+    thedict = np.load("data/scoretable.npy",allow_pickle='TRUE').item()
+    thedict = dict( sorted(thedict.items(), key=lambda x: x[0].lower(), reverse = True) ) # sorting it so latest are at top (YYYY-MM-DDX.csv)
+                                                                                          # X is letter if there are multiple on that day, first one does not have a letter.
+    thedict_data = []
+    
+    for k in thedict:
+        # thedict_data.append()
+        sfd=[] #string for data  
+        for i, name in enumerate(thedict[k]['Players']):
+            sfd.append(name)
+            sfd.append(str(thedict[k]['Scores'][0][i]))
+            if i + 1 < len(thedict[k]['Players']):
+                sfd.append(' | ')
+    
+        thedict_data.append({'Game': k.split('.')[0], 'Scores': ' '.join(sfd)})
+        # print(thedict_data)
+
+    return [thedict_data]
+
+
 
 
 @app.callback(Output('score-graph', 'figure'),
@@ -316,7 +361,7 @@ def get_graph_for_game(active_cell, data):
         # print('making plot')
         fig.update_layout(font_family="Courier New", xaxis_title='Round', yaxis_title='Score',)
         fig.add_hline(y=100) #https://community.plotly.com/t/announcing-plotly-py-4-12-horizontal-and-vertical-lines-and-rectangles/46783
-        print(fig)
+        # print(fig)
         return fig #active cell looks like this: {'row': 4, 'column': 1, 'column_id': 'Scores'} 
 
 
