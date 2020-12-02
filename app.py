@@ -161,7 +161,7 @@ html.P(["4-player points are awarded; 1st place: 3, 2nd place: 1, 3rd place: 0, 
         "Ordering on the table is done by PPG (and at least five games have to have been played).", html.Br(),
         "In the case of ties on the table, tie breakers are: (1) Lowest Average Score, (2) highest PT4, (3) lowest AS4, (4) highest PT3, (5) lowest AS3, (6) highest Gpt.",
         html.Br(),html.Br(),
-        "AK is known for sweaty places and constantly fishing."
+        "AK is known for sweaty plays and constantly fishing."
 
         
 ], style={'fontFamily': 'Courier New', 'fontSize': 10, 'whiteSpace': 'pre-wrap'}),
