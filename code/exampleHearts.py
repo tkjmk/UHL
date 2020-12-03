@@ -27,7 +27,7 @@ def replace(d):
         for v in d:
             replace(v)   
 
-players = ("TK", "GB", "BS", "AK", "PB", "FC", "OB", "AB", "JK", "DB", "TK_backup")
+players = ("TK", "GB", "BS", "AK", "PB", "FC", "OB", "AB", "JK", "DB")
 threemanstats = dict.fromkeys(players) # dict of dict, will have players, and then all the interesting stats.
 thestats = dict.fromkeys(players)
 stats2record = [ "GP3", "R3", "BP3", "SM3", "TP3", "GP4", "R4", "BP4", "SM4", "TP4"]
