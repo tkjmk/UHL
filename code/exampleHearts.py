@@ -203,7 +203,7 @@ stattbl2 = stattbl2.sort_values(["PPG","ASt","PT4","AS4","PT3","AS3","GPt"], asc
 # move everyone with less than 5 games to the bottom of the able. https://stackoverflow.com/a/30947021
 # if you have played less than 5 games, you move to bottom regardless of PPG.
 
-move2bottomg = stattbl2["GPt"] < 5
+move2bottomg = stattbl2["GPt"] < 25 # changed from 5
 target_rows = [i for i, x in enumerate(move2bottomg) if x] 
 target_rows = move2bottomg[target_rows]
 target_rows = target_rows.index
