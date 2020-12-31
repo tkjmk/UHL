@@ -185,6 +185,8 @@ for index, row in stattbl2.iterrows():
     stattbl2.loc[index,"PT4"] = (stattbl2.loc[index,"W4"] * 3) + (stattbl2.loc[index,"S4"]) + (stattbl2.loc[index,"L4"] * -2) + (stattbl2.loc[index,"BP4"])
     stattbl2.loc[index,"PT3"] = (stattbl2.loc[index,"W3"] * 2) - (stattbl2.loc[index,"L3"]) + (stattbl2.loc[index,"BP3"])
 
+stattbl2.loc["PB", "PT4"] = stattbl2.loc["PB", "PT4"] - 1 # penalty for quitting game 2020-12-31B
+stattbl2.loc["TK", "PT4"] = stattbl2.loc["PB", "PT4"] + 1 # could have came first, but when Phil quit came second so giving +1, to give +2 overall.
 
 stattbl2.insert(0, "Lt", stattbl2["L3"] + stattbl2["L4"], False)
 stattbl2.insert(0, "Wt", stattbl2["W3"] + stattbl2["W4"], False)

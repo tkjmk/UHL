@@ -161,7 +161,8 @@ html.P(["4-player points are awarded; 1st place: 3, 2nd place: 1, 3rd place: 0, 
         "Ordering on the table is done by PPG (and at least five games have to have been played - or if any players reach over 100, at least 25 games - or if any player reaches over 200, at least 50 games).", html.Br(),
         "In the case of ties on the table, tie breakers are: (1) Lowest Average Score, (2) highest PT4, (3) lowest AS4, (4) highest PT3, (5) lowest AS3, (6) highest Gpt.",
         html.Br(),html.Br(),
-        "AK is known for sweaty plays and constantly fishing."
+        "2020-12-31B is an unfinished game, where PB quit when taking the queen and thereby having over 100pts. FC was winning by a thin margin to TK at the time. PB receives a -1 penalty for foul play on top of the -2 to lose. Ben takes 0 for coming third.  ", html.Br(),
+        "Flo takes +3 for being first. Tane takes +2, as he could have came first but game was ended early - however he was second when Phil quit, so doesn't get the full +3."
 
         
 ], style={'fontFamily': 'Courier New', 'fontSize': 10, 'whiteSpace': 'pre-wrap'}),
